@@ -55,7 +55,7 @@ public class FramJack extends Activity {
         _appInterface = new ApplicationInterface();
         
         bindControls();
-        
+       // Declearation :public synchronized void registerOnUpdateListener(UpdateListener listener)
         _appInterface.registerOnUpdateListener(_listener);
         attachCheckChangeListeners();
     }
@@ -64,7 +64,7 @@ public class FramJack extends Activity {
 		public void Update() {
 			runOnUiThread(new Runnable() {
 				public void run() {
-					updateBindings();
+					_digitalOutputState(); //init
 				}
 			});
 		}
@@ -88,6 +88,7 @@ public class FramJack extends Activity {
     	super.onResume();
     }
     
+    // Learn it
     private void bindControls() {
     	_tvIn1 = (TextView) findViewById(R.id.textViewIn1);
     	_tvIn2 = (TextView) findViewById(R.id.textViewIn2);
@@ -102,7 +103,7 @@ public class FramJack extends Activity {
     	_swOut3 = (Switch) findViewById(R.id.switch3);
     	_swOut4 = (Switch) findViewById(R.id.switch4);
     }
-    
+     // Learn it
     private void updateBindings() {
     	_tvIn1.setText(_appInterface.getDigitalInput(0) ? R.string.high : R.string.low);
     	_tvIn2.setText(_appInterface.getDigitalInput(1) ? R.string.high : R.string.low);
