@@ -45,6 +45,7 @@ public class ApplicationInterface {
 	private Timer _watchdogConnectionTimer;
 	private UpdateListener _listener = null;
 	
+	// init
 	public ApplicationInterface() {
 		_framer = new FramingEngine();
 		_serialDecoder = new SerialDecoder();
@@ -141,7 +142,7 @@ public class ApplicationInterface {
 		
 		OnUpdateListener();
 	}
-	
+	// only return one byte array
 	private int[] encode() {
 		int retValue = 0;
 		for (int i = 0; i < 4; i++) {
